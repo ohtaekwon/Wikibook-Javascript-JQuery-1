@@ -900,3 +900,211 @@ console.log("name = " +name)
 
 ## :pencil:_Lesson 09. 배열_
 
+### _01. 배열이란?_
+
+- 일반 변수는 데이터를 하나만 저장할 수 있지만,
+- 배열 변수는 변수 하나에 **`여러 개의 데이터`**를 담을 수 있는 데이터형이다.
+
+<br>
+
+> ***일반변수***
+
+![](https://user-images.githubusercontent.com/75871005/125486595-5053de50-7ab9-4cc3-8544-7c9cd533deae.png)
+
+
+
+> ***배열***
+
+![](https://user-images.githubusercontent.com/75871005/125488477-7f9a532b-517c-4bf2-ac40-70226104e7e7.png)
+
+> ***일반변수 vs 배열***
+
+```javascript
+// 일반 변수로 표현한 경우
+var userName1 = "TK";
+var userName2 = "BTS";
+var userName3 = "SON";
+
+// 배열로 표현한 경우
+var userName = ["TK", "BTS", "SON"];
+```
+
+<br>
+
+### _02. 배열 생성_
+
+```javascript
+var 변수이름 = [데이터[,...]];
+```
+
+- 설명
+  - 배열 데이터를 만드는 방법은 대괄호`[ ]`에 데이터를 넣어 표현한다.
+  - 데이터 항목은 콤마`,`를 이용해 구분한다.
+
+<br>
+
+#### :memo:_예제 01)_ "TK", "BTS", "SON" 이름 정보를 담은 배열 만들기
+
+```javascript
+var uesrName = ["TK", "BTS", "SON"];
+```
+
+<br>
+
+#### :memo:_예제 02)_ 본인의 이름, 나이, 취미 정보를 담은 배열 만들기
+
+- 배열에는 여러 개의 데이터형을 혼합해서 보관할 수 있다.
+
+```javascript
+var userInfo = ["TK", 30, "코딩"];
+```
+
+<br>
+
+#### :exclamation: ​참고 하기 :exclamation:
+
+- 다른 방법으로 배열하기
+
+```javascript
+var 변수이름 = new Array(데이터[,...]);
+```
+
+<br>
+
+### _03. 배열 요소 접근_
+
+```javascript
+배열이름[n];
+```
+
+- `n`은 배열 요소의 **index**를 나타낸다.
+  - ***값은 0부터 시작해 배열 크기 -1까지의 값을 갖는다.***
+
+<br>
+
+#### :memo:_예제 03)_  다음 배열 요소를 하나씩 출력해 보시오.
+
+```javascript
+var userName = ["OHTAEKWON", "BTS", "SON", "GD", "TK", "민수", "태현", "태준"];
+
+/////////////////////////////////////
+document.write("userName[0] = " + userName[0], "<br>");		// userName[0] = OHTAEKWON
+document.write("userName[1] = " + userName[1], "<br>");		// userName[1] = BTS
+document.write("userName[2] = " + userName[2], "<br>");		// userName[2] = SON		
+document.write("userName[3] = " + userName[3], "<br>");		// userName[3] = GD
+document.write("userName[4] = " + userName[4], "<br>");		// userName[4] = TK
+document.write("userName[5] = " + userName[5], "<br>");		// userName[5] = 민수
+document.write("userName[6] = " + userName[6], "<br>");		// userName[6] = 태현
+document.write("userName[7] = " + userName[7], "<br>");		// userName[7] = 태준
+```
+
+- 설명
+  - ***n은 배열 `인덱스 값`을 의미하며, 인덱스 값은 0부터 시작한다.***
+  - **`인덱스 값`**을 이용해 배열에 저장되어 있는 정보에 접근할 수 있다.
+
+<br>
+
+---
+
+<br>
+
+## :pencil:_Lesson 10. 변수 종류_
+
+### _01. 변수 종류_
+
+- 변수는 사용 범위에 따라 총 4개의 변수로 나뉜다.
+
+| 변수                   | 설명                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| **전역변수**           | 전역에서 사용하는 데이터를 담는 변수이며 어디서든 접근해서 사용이 가능하다 |
+| **지역변수**           | 특정 영역에서만 사용할 수 있는 변수이며, 주로 함수 내부에 만들어지는 변수이다. |
+| **매개변수(파라미터)** | 함수 외부에서 함수 내부로 데이터를 전다하기 위한 용도로 사용하는 변수이다. |
+| **멤버변수(프로퍼티)** | 클래스 내부에 만들어지며 주로 객체에서 사용하는 정보를 담는 변수이다. |
+
+<br>
+
+### _02. 전역변수_
+
+```javascript
+var globalV = "전역변수"; //----------※1
+
+window.onload=function(){
+    global2 = "전역변수"; //----------※2
+}
+function func1(){
+    var local = "지역변수"; //----------※3
+}
+```
+
+- `※1` 이 위치의 변수는 모두 **전역변수**이다.
+- `※2` 함수 내부에서 var 없이 변수에 값을 대입하면 전역변수로 만들어진다. 
+  - 즉, `global2 = "전역변수";` 는 window.global2="전역변수"와 같다.
+- `※3` local1은 **지역변수**이다.
+
+<br>
+
+### _03. 지역변수_
+
+```javascript
+var globalV = "전역변수";
+
+window.onload=function(){
+    var local1 = "지역변수"; //----------※1
+}
+function func1(){
+    var local1 = "지역변수"; //----------※2
+}
+function func2(){
+    document.write(globalV);
+}
+```
+
+- `※1` local1은 지역변수이며 오직 `onload()`함수 영역에서만 사용할 수 있다.
+- `※2` local1 역시 `func1`에서만 사용할 수 있는 **지역변수**이다. `※1` 과 변수 이름이 같더라도 다른 영역에서 만들어진 변수이기 떄문에 완전히 다른 변수이다.
+
+<br>
+
+### _04. 매개변수_
+
+```javascript
+var globalV = "전역변수";
+
+window.onload=function(){
+    var local1 = "지역변수";
+    func1(100, 200);
+}
+//------------ ※1 , ※2
+function func1(num1, num2){
+    var local1 = "지역변수";
+    
+    document.write("매개변수 num1= "+num1+", num2="+num2");
+}
+```
+
+- `※1` , `※2` 는 **매개변수** 또는 **파라미터**라고 부른다. 주로 **함수 외부에서 함수 내부로** 데이터를 전달할 때 사용한다.
+- ***매개변수는 지역변수와 마찬가지로 함수 내부에서만 사용할 수있다.***
+
+<br>
+
+### _05. 멤버변수_
+
+```javascript
+function MyClass(){
+    this.name = "멤버변수"; //----------※1
+}
+MyClass.prototype.showName=function(){ //----------※2
+    document.write("name = ", this.name);
+}
+var objClass = new MyClass();
+objClass.showName();
+```
+
+- `※1` 변수처럼 name이 있는데, 이 변수를 **멤버변수**라고 부른다. 
+  - 이 변수는 `MyClass`라는 클래스에서 만들어지고 사용하기 떄문에 멤버변수라고 부른다.
+- `※2` 는 **멤버함수** 또는 **메서드**라고 부른다. 
+
+<br>
+
+---
+
+<br>
