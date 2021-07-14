@@ -1,4 +1,4 @@
-# _APPENDIX 01_ - 함수와 클래스
+# APPENDIX 01_ - 함수와 클래스
 
 <br>
 
@@ -104,15 +104,22 @@ print99DAN(5);
 
 <br>
 
-- 매개변수의 위치는 다음과 같이 괄호 안에 위치한다.![](https://user-images.githubusercontent.com/75871005/125628085-77ce9f2d-6725-4378-9ac9-bd35ff15ea92.png)
+- 매개변수의 위치는 다음과 같이 괄호 안에 위치한다.
+
+  ![](https://user-images.githubusercontent.com/75871005/125628085-77ce9f2d-6725-4378-9ac9-bd35ff15ea92.png)
+
 - 매개변수는 함수에 따라 없을 수도 있고 1개 이상 있을 수도 있다.
 
 <br>
 
 ### _06. 리턴값_
 
-- 리턴값은 매개변수와 반대의 개념이라고 보면 된다.![](https://user-images.githubusercontent.com/75871005/125629020-7b963dd3-f6d9-4e3f-b886-edb72ac96e72.png)
+- 리턴값은 매개변수와 반대의 개념이라고 보면 된다.
+
+  ![](https://user-images.githubusercontent.com/75871005/125629020-7b963dd3-f6d9-4e3f-b886-edb72ac96e72.png)
+
 - `매개변수`는 **함수 외부에서 함수 내부**로 데이터를 전달하기 위해 사용하는 통로지만,
+
 - `리턴값`은 **함수 내부에서 함수 외부**로 데이터를 보내기 위해 사용하는 통로이다.
 
 ```javascript
