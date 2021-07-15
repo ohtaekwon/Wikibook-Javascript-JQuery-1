@@ -634,5 +634,140 @@ $(document).ready(function){
 
 <br>
 
-#### :memo:_예제 03) 1단계 if_ ​ :vs:  _2단계 if_
+### _03. 1단계 if_  :vs: _2단계 if_​
 
+#### :memo:_예제 03) 아이디 패스워드 확인 테스트_
+
+- `prompt()`를 홯용해 사용자 아이디와 사용자 패스워드를 입력받은 후 사용자 아이디가 "OHTAEKWON"이고 패스워드 1234인 경우에만 "환영합니다." 메시지를 출력해주세요.
+
+:one: **풀이 소스**
+
+```javascript
+var userID = window.prompt("사용자 아이디는?");
+var userPW = window.prompt("사용자 패스워드는?");
+
+if(userID=="OHTAEKWON" && userPW==1234){
+    alert("환영합니다.");   
+}else{
+    alert("아이디/비밀번호를 확인해주세요");
+}
+
+```
+
+<br>
+
+:two: **풀이 소스**
+
+```javascript
+var userID = window.prompt("사용자 아이디는?");
+var userPW = window.prompt("사용자 패스워드는?");
+
+if(userID=="OHTAEKWON"){
+    if(userPW=1234){
+        alert("환영합니다.");
+    }
+}else{
+    alert("아이디/비밀번호를 확인해주세요");
+}
+
+```
+
+<br>
+
+---
+
+<br>
+
+## :pencil:_Lesson 07. 3단계 if_
+
+**:speaker: 3단계 이상 if는 `if ~ else` 를 반복해서 사용하는 구조이다.**
+
+<br>
+
+### _01. 문법_
+
+```javascript
+if(조건식1){
+    조건식1이 참일 때 실행되는 구문1;
+    [조건식1이 참일 때 실행되는 구문2;
+    .......]
+}else if(조건식2){
+    조건식2이 참일 때 실행되는 구문1;
+    [조건식2이 참일 때 실행되는 구문2;
+    .......]
+}
+else{
+    조건식2가 거짓일 때 실행되는 구문1;
+    [조건식2가 거짓일 떄 실행되는 구문2;
+    ........]
+}
+```
+
+- 3단계 if는 여러 조건을 비교할 때 사용한다. (`if ~ else`가 반복해 등장한다.)
+
+<br>
+
+![](https://github.com/ohtaekwon/Wikibook-Javascript-JQuery-1/blob/master/img/04.07_1.png?raw=true)
+
+<br>
+
+### _02. 예제_
+
+#### :memo:_예제 01) 로그인 처리_
+
+- 사용자 아이디와 패스워드를 각각 입력받은 후 사용자 아이디가 "OHTAEKWON"이고 패스워드가 1234인 경우에만 "환영합니다."를 출력한다.
+  - 만약 아이디가 다른 경우 **"사용자 아이디를 잘못 입력했습니다."**
+  - 패스워드가 잘못된 경우 **"패스워드를 잘못 입력했습니다."**
+
+:one: **풀이 소스**
+
+```javascript
+// 1. 값 입력.
+var userID = window.prompt("사용자 아이디는?", "아이디를 입력해주세요.");
+var userPW = window.prompt("사용자 패스워드는?", "비밀번호를 입력해주세요.");
+
+uesrPW = parseInt(userPW); //-------※1. 형변환(문자→숫자)
+
+// 2. 값 비교.
+if(userID == "OHTAEKWON" && userPW==1234)
+    alert("환영합니다.");
+else if(userID!="OHTAEKWON")
+    alert("사용자 아이디를 잘못 입력했습니다.");
+else
+    alert("패스워드를 잘못 입력했습니다.")
+```
+
+<br>
+
+:two: **풀이 소스**
+
+```javascript
+// 1. 값 입력.
+var userID = window.prompt("사용자 아이디는?", "아이디를 입력해주세요.");
+var userPW = window.prompt("사용자 패스워드는?", "비밀번호를 입력해주세요.");
+
+userPW = parseInt(userPW);
+
+if(userID=="OHTAEKWON" && userPW==1234)
+    alert("환영합니다.");
+else if(userID=="OHTAEKOWN")
+    alert("패스워드를 잘못 입력했습니다.");
+else
+    alert("사용자 아이디를 잘못 입력했습니다.");
+```
+
+<br>
+
+---
+
+<br>
+
+## :pencil:_Lesson 08. 조건부 연산자_
+
+**:speaker: 3단계 이상 if는 `if ~ else` 를 반복해서 사용하는 구조이다.**
+
+<br>
+
+### _01. 조건부 연산자란?_
+
+#### 
