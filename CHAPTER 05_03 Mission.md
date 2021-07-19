@@ -114,3 +114,35 @@ $(document).ready(function(){
 5. 아래쪽 화살표 버튼을 누루는 경우 아래쪽 +50만큼 이동
 6. 단, 물고기가 움직이는 영역(#panel) 밖으로 넘어가면 안됨.
 
+```javascript
+```
+
+<br>
+
+> ***1 . 키보드 다운 이벤트 등록하기***
+
+```javascript
+$(document).keydown(function(e){
+    
+});
+```
+
+<br>
+
+> ***2. 키보드 입력값 알아내기***
+
+```javascript
+$(document).keydown(function(e){
+    alert("입력한 키 코드 값 = " + e.keyCode);    
+});
+```
+
+<br>
+
+> ***3. 물고기 위치 움직이기***
+
+```javascript
+$fish.css({
+    left: 물고기 x의 위치 값
+    Top: 물고기 y의 위치 값
+})
