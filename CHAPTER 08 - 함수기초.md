@@ -682,3 +682,444 @@ document.write("4. b = " +b+ "<br>");	//----------(※5)
 
 ## :pencil:_Lesson 04. 매개변수가 있는 함수 만들기_
 
+- **매개변수란?**
+  - 함수 외부에서 함수 내부로 데이터를 전달할 때 사용하는 변수
+
+<br>
+
+### _01. 사용법_
+
+##### :pencil: 문법
+
+```javascript
+function 함수이름([매개변수1, 매개변수2, . . . .]){
+    실행구문;
+}
+```
+
+<br>
+
+##### :pencil: 설명
+
+- 문법은 매개변수가 있는 것을 제외하면 기본 함수와 동일하다.
+- 매개변수를 총 6개의 주제로 나누면
+  1. **매개변수의 사용**
+  2. **매개변수란?**
+  3. **매개변수 위치**
+  4. **매개변수는 지역변수**
+  5. **매개변수 개수**
+  6. **매개변수에 데이터 전달하기**
+
+<br>
+
+*​**:one: 매개변수는 이럴 때 사용한다.***
+
+- **출력결과**
+  - 프론트엔드님 환영합니다.
+  - 자바스크립트님 환영합니다.
+  - 오태권님 환영합니다.
+
+```javascript
+function hello(){
+    var name="프론트엔드";
+    document.write(name+"님 환영합니다. ");
+}
+hello();
+```
+
+- 이렇게 한다면, "프론트엔드님 환영합니다." 까지는 처리할 수 있지만, 자바스크립트, 오태권의 메시지를 출력은 할 수 가 없다.
+- 하지만, 문제는 name이 함수 내부에 `지역변수`로 되어 있어 함수가 한 번 실행되면 함수 외부에서 함수 내부를 접근할 수 없게 되어 처리할 수가 없다.
+
+![](https://github.com/ohtaekwon/Wikibook-Javascript-JQuery-1/blob/master/img/08.03_1.png?raw=true)
+
+- 지금까지 배운 방법으로는 이 문제를 해결할 수 없다.
+- 하지만, 먼저 실행전에 hello()함수에 구멍(매개변수)를 뚫어 놓는다.
+- 구멍에는 한 개부터 수백 개까지 만들고 싶은 만큼 만들 수 있다.
+- 또한, 구멍마다 이름을 붙일 수 가 있는데,
+  - 이 이름을 만드는 규칙은 변수이름 만드는 방법과 동일하다
+
+![08.03_2.png](https://github.com/ohtaekwon/Wikibook-Javascript-JQuery-1/blob/master/img/08.03_2.png?raw=true)
+
+- 이제 함수를 호출 할 때 이 구멍을 통해 함수 외부에서 함수 내부로 데이터를 전달한다.
+
+```javascript
+function hello(value){
+    var name = value;
+    document.write(name+"님 환영합니다.");
+}
+
+/*
+	함수를 호출하면 값이 매개변수인 value로 넘어간다.
+	즉, value = "프론트엔드"와 같게 된다.
+*/
+hello("프론트엔드"); 
+hello("자바스크립트");
+hello("오태권");
+
+// 이제 함수를 호출 할 때마다 value라는 구멍에 값을 넘겨 함수 내부에 있는 변수 name의 값을 변경할 수 있다.
+```
+
+<br>
+
+*​**:two: 매개변수란?***
+
+- 매개변수는 변수의 일종이며 함수 외부에서 함수 내부로 데이터를 전달할 때 매개체 역할을 하는 변수이다. 
+- 즉, 함수 외부에서 함수 내부로 데이터를 전달할 때 사용하는 변수
+
+```javascript
+// 함수A("data");
+// "data"가 paraml으로 전달된다.
+
+
+function 함수A(paraml){
+    //이곳은 함수 내부
+    document.write(param1);
+}
+```
+
+<br>
+
+*​**:three: 매개변수 위치***
+
+- 매개변수 위치는 함수 이름 안에 위치한다.
+
+![](https://github.com/ohtaekwon/Wikibook-Javascript-JQuery-1/blob/master/img/08.03_3.png?raw=true)
+
+<br>
+
+*​**:four: 매개변수는 지역변수***
+
+- 또한 매개변수는 지역변수이기도 한다.
+- 이는 ***함수가 실행될 때 만들어지고 함수가 종료되면 자동으로 사라진다.***
+- 지역변수가 매개변수와 다른 점은 매개변수를 만들 때 var를 붙이지 않는다.
+
+```html
+<script>
+    function 함수A(paraml){
+        . . .. 
+        alert("paraml ="+ paraml) // paraml(o) : 매개변수는 함수A() 내부에서만 사용이 가능하다.
+    }
+    
+    함수A("datal");
+    alert("paraml ="+ paraml);	// prarml(x) : 매개변수는 지역변수와 동일하기 때문에 함수 외부에서는 사용할 수 가 없다.
+
+</script>
+```
+
+<br>
+
+*​**:five: 매개변수 개수***
+
+- 매개변수 개수 역시 일반 변수처럼 열 개든 스무 개든 만들고 싶은 만큼 만들 수 있다/
+- 매개변수를 하나를 추가해 '방문 횟수'를 나타낼 수 있다.
+
+```javascript
+function hello(name, count){
+    document.write(name+"님 "+count+"번째 방문을 환영합니다.");
+}
+hello("오태권", 20);
+```
+
+<br>
+
+*​**:six: 매개변수에 데이터 전달하기***
+
+- 함수 매개변수에 데이터를 전달하는 방법은 함수를 호출할 때 데이터를 넣어 호출해 준다.
+- 만약 매개변수가 두 개면 함수 호출 시 데이터를 두개 넣어준다. 
+
+```javascript
+function hello(name, count){
+    document.write(name + "님 " + count+"번째 방문을 환영합니다.");
+}
+hello("오태권",200);
+```
+
+- `hello()`를 실행하면 `"오태권"` 데이터는 name에, `200`은 count에 저장된다.
+  - 이는 일반 변수를 만들며면서 데이터 초기화시키는 것과 같다. 
+  - name = "오태권"
+  - count = 200;
+
+<br>
+
+- 매개변수가 두 개인데, 하나만 보낸 경우
+
+```javascript
+function hello(name, count){
+    document.write(name + "님 " + count+"번째 방문을 환영합니다.");
+}
+hello("오태권");
+```
+
+```
+오태권님 undefined번째 방문을 환영합니다.
+```
+
+- count에는 undefined가 저장된다.
+
+<br>
+
+### _02. 예제_
+
+#### :memo:_예제 01)_ 매개변수로 받은 두 수를 더한 결과값을 출력하는 함수를 만들어라.
+
+```javascript
+function sum(num1, num2){
+    var result = num1 + num2;
+    alert("두수의 합은 = " + result);
+}
+sum(10,20);
+```
+
+````
+두수의 합은 = 30
+````
+
+##### :pencil: 설명
+
+- 먼저 합한다는 의미를 가진 sum을 만든 후 외부에서 데이터를 받기 위해 매개변수를 두 개 만든다.
+- 그리고, 함수 내부에 이 두 매개변수 값을 더한 결과값을 출력하는 구문을 작성한다.
+- 마지막으로 숫자 10과 20을 매개변수 값으로 해서 sum()함수를 호출한다.
+
+<br>
+
+***이런 식으로 함수에 매개변수를 만들어 함수 호출 시 외부에서 데이터를 받아 함수 내부에서 사용하면 된다.***
+
+<br>
+
+### _03. arguments란?_
+
+#### :memo:_예제 02)_ 다음 코드가 실행되면 어떤 값이 출력될까?
+
+```javascript
+function showInfo(){
+    alert("안녕하세요. "+userName+"님의 나이는 "+age+"입니다. ");
+}
+showInfo("오태권",30);
+```
+
+##### :computer: 실행결과
+
+- Uncaught ReferenceError: userName is not defined
+
+##### :pencil: 설명
+
+- 함수 호출 시 값을 넘겼지만 값을 받는 매개변수가 선언돼 있지 않기 때문에 아무런 값이 찍히지 않는다.
+- 자바스크립트는 userNmae을 발견하면 우선 지역변수와 매개변수 중에서 userName을 찾난다.
+- 만약 발견하지 않는다면 지역변수에서 찾아 사용한다.
+- 전역변수에도 없다면 userName이란 변수가 없는 것으로 판단하고 에러를 발생시킨다.
+
+<br>
+
+***매개변수를 선언하지 않고 매개변수 값에 접근하는 방법으로 자바스크립트 함수는 argument라는 객체를 기본으로 제공한다.***
+
+- argument에는 모든 매개변수 값이 들어있다.
+
+<br>
+
+- ***arguement란?***
+  - 매개변수의 모든 정보가 담겨있는 장소(객체)
+  - 배열은 아니지만 배열처럼 사용하면 된다.
+  - 매개변수의 개수는 argument의 length 프로퍼티를 이용하면 알 수 있다.
+
+```javascript
+function showInfo(){
+    console.log("0 = "+arguments[0]);
+    console.log("1 = "+arguments[1]);
+    alert("안녕하세요. "+arguments[0]+"님의 나이는 "+arguments[1]+"입니다."); 
+}
+showInfo("오태권",30);
+```
+
+<br>
+
+---
+
+<br>
+
+## :pencil:_Lesson 05. 리턴값이 있는 함수 만들기_
+
+### _01. 사용법_
+
+##### :pencil: 문법
+
+```javascript
+function 함수이름([매개변수1, 매개변수2,. . . . ]){
+    실행구문;
+    
+    [return 리턴값;]
+}
+```
+
+:computer: **호출**
+
+- var 변수 = 함수이름();
+
+##### :pencil: 설명
+
+![](https://github.com/ohtaekwon/Wikibook-Javascript-JQuery-1/blob/master/img/08.05_1.png?raw=true)
+
+- 문법은 리턴값이 있는 것을 제외하면 매개변수가 있는 함수와 동일
+
+<br>
+
+:diamond_shape_with_a_dot_inside: **리턴값(return)이란?**
+
+함수 내부는 함수라는 철벽으로 포장돼 있기 때문에 한번 실행되면 함수 외부에서 접근할 수 없다고 했다.
+
+이때 매개변수를 활용하면 함수 내부로 데이터를 전달할 수 있다.
+
+- **리턴값**은 매개변수와 반대되는 값
+  - 매개변수 값이 함수 외부에서 함수 내부로 들어오는 입력값이라면,
+  - 리턴 값은 ***함수 내부에서 처리한 결과값을 함수 외부로 전달하기 위해 사용하는 일종의 출력값***이다.
+  - 이때 사용하는 구문이 바로 `return` 명령어 
+
+![](https://github.com/ohtaekwon/Wikibook-Javascript-JQuery-1/blob/master/img/08.05_3.png?raw=true)
+
+<br>
+
+### _02. 예제_
+
+#### :memo:_예제 01)_ 두 수를 매개변수로 받은 후 이 두 값을 더한 결과값을 리턴하는 함수sum()을 만들어라
+
+```javascript
+function sum(num1, num2){
+    var result = num1+num2;
+    return result;
+}
+
+var value=sum(10,30);
+alert("두 수의 합은 = " + value);
+```
+
+##### :pencil: 설명
+
+- return문을 이용해서 함수 내부에서 처리한 결과값을 함수 외부로 전달했다.
+- 즉, 다음 내용이 실행되면
+  - var value = sum(10,30);
+- 쉽게 알수 있는 구문처럼 함수 내부에서 리턴한 값 40이 value변수에 대입된다고 생각해보자.
+
+| 실행 전                 | 실행 후         |
+| ----------------------- | --------------- |
+| var value = sum(10,20); | var value = 40; |
+
+<br>
+
+:question: **질문** :question: 
+
+- 리턴값이 있는 경우는 항상 변수로 받아야 하는것인가?
+  - 아니다
+  - 필요 없다면 리턴값을 굳이 변수에 저장하지 않아도 된다. 
+
+<br>
+
+### _03. return문의 또 다른 용도_
+
+- return문은 **함수 내부의 데이터를 → 함수를 호출한 곳으로 전달할 때**도 사용하지만 **함수를 즉시 빠져 나오는 기능**도 한다.
+- **함수내부 데이터를 외부로 호출**
+- **함수를 즉시 빠져 나오는 기능**
+
+<br>
+
+#### :memo:_예제 02)_ 무한 루프를 돌며 숫자를 입력받고 입력받은 수익 합을 화면에 출력하는 기능을 sample()이라는 함수에 만들어 보시오. (단, 입력값이 0이면 즉시 실행을 멈춰라)
+
+```javascript
+function sample(){
+    var sum=0;
+    var count=1;
+    
+    // 무한루프 시작
+    while(true){
+        var value=parseInt(window.prompt("수 입력",1));
+        if(value==0){
+            document.write("종료합니다.");
+            
+            // 함수 탈출
+            return; //------------(※1)
+        }
+        
+        // 입력값 더하기
+        sum+=value;
+        // 입력값 출력하기
+        document.write(count+". "+sum+"<br>");
+        count++
+    }
+    //------------(※2)
+    document.write("총 "+count+"번 실행했습니다.");
+}
+// 함수 호출
+sample();
+```
+
+##### :pencil: 설명
+
+- 앞에서 설명한 것처럼 **return**의 또 다른 기능은 ***함수를 멈추고 즉시 탈출할 수 있는 기능***을 가지고 있다.
+- 언뜻 보면 **break**와 비슷해 보일 수도 있지만 완전히 다른 동작을 한다.
+- 만약 예제에서 `※1`의 return문을 **break문으로 변경해 실행하는 경우 자바스크립트는 while() 루프를 빠져 나온후** `※2`구문을 실행하게 된다.
+- 이와 달리 return문은 실행 즉시 함수를 탈출하기 떄문에 총 반복 횟수를 출력하는 구문을 실행하지 않게 된다.
+- ***정리하자면 break문은 루프 탈출 기능이고, return문은 함수 탈출이다.***
+
+<br>
+
+---
+
+<br>
+
+## :pencil:_Lesson 06. 함수 이름 만들 때 주의사항_
+
+- 변수 이름과 마찬가지로 함수 이름 역시 지켜야할 규칙이 있다.
+
+<br>
+
+*​**:one: 숫자로 시작하면 안된다.***
+
+```javascript
+function 1st(){
+    
+} 
+// 숫자로 시작하는 것은 불가능하다.
+```
+
+<br>
+
+*​**:two: 대소문자 구분: ex) name과 Name은 완전히 다른 함수이다.***
+
+```javascript
+// 일반 함수
+function showUserName(){
+    
+}
+// 일반 클래스
+function ShowUserName(){
+    
+}
+```
+
+- 함수 이름이 모두 같더라도 대소문자가 다르면 완전히 다른 함수로 해석한다.
+- 일반함수의 경우 : 소문자로 시작하며 클래스를 만들 땐 대문자로 함수를 만든다.
+- 함수가 대문자로 되어 있으면 일반 함수가 아닌 클래스로 판단해 다음 처럼 호출 방법이 완전히 달라지게 된다.
+
+```javascript
+// "소문자로 시작하니 일반 함수군,호출해서 사용하면 되겠군."
+
+showUserName();
+
+// "대문자로 시작하니 클래스군. 객체의 인스턴스를 생성해서 사용하면 되겠군."
+var user = new ShowUserName();
+```
+
+<br>
+
+*​**:three: 낙타표기법(camelcase): 여러 단어가 조합되는 경우 소문자와 대문자를 번갈아 넣어 표기***
+
+```javascript
+function showUserName(){
+    
+}
+```
+
+<br>
+
+---
+
+
+
