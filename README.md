@@ -56,7 +56,7 @@ _교재의 내용은 <자바스크립트+제이쿼리 기본편>이다._
 | ***07.19*** |          ch05 : 03 mission          | :ballot_box_with_check: |
 | ***07.20*** | ch06 : for문 & 다중 for문 / mission | :ballot_box_with_check: |
 | ***07.21*** |      ch07 : while문 / Mission       | :ballot_box_with_check: |
-| ***07.22*** |                                     |                         |
+| ***07.22*** |                                     | :ballot_box_with_check: |
 | ***07.23*** |                                     |                         |
 | ***07.24*** |                                     |                         |
 | ***07.25*** |                                     |                         |
