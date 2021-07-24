@@ -197,6 +197,3 @@ checkEvenOdd();
 ```
 
 ##### :pencil: 설명
-
-
-
