@@ -59,7 +59,7 @@ _교재의 내용은 <자바스크립트+제이쿼리 기본편>이다._
 | ***07.22*** |        ch08 : 함수 / Mission        | :ballot_box_with_check: |
 | ***07.23*** |      ch09 : 함수기능 / Mission      | :ballot_box_with_check: |
 | ***07.24*** |                                     | :ballot_box_with_check: |
-| ***07.25*** |                                     |                         |
+| ***07.25*** |                                     | :ballot_box_with_check: |
 | ***07.26*** |                                     |                         |
 | ***07.27*** |                                     |                         |
 | ***07.28*** |                                     |                         |
