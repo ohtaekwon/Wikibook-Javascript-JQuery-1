@@ -46,26 +46,29 @@ _교재의 내용은 <자바스크립트+제이쿼리 기본편>이다._
 
 ## _Planning Chart_
 
-|    Date     |               content               |          check          |
-| :---------: | :---------------------------------: | :---------------------: |
-| ***07.14*** |        공부시작 ch01 - ch02         | :ballot_box_with_check: |
-| ***07.15*** |                ch03                 | :ballot_box_with_check: |
-| ***07.16*** |            ch04 01/02/03            | :ballot_box_with_check: |
-| ***07.17*** |                ch04                 | :ballot_box_with_check: |
-| ***07.18*** |            ch05 : 01/02/            | :ballot_box_with_check: |
-| ***07.19*** |          ch05 : 03 mission          | :ballot_box_with_check: |
-| ***07.20*** | ch06 : for문 & 다중 for문 / mission | :ballot_box_with_check: |
-| ***07.21*** |      ch07 : while문 / Mission       | :ballot_box_with_check: |
-| ***07.22*** |        ch08 : 함수 / Mission        | :ballot_box_with_check: |
-| ***07.23*** |      ch09 : 함수기능 / Mission      | :ballot_box_with_check: |
-| ***07.24*** |         ch09 : 함수 기능 03         | :ballot_box_with_check: |
-| ***07.25*** |         ch09 : 함수 기능 04         | :ballot_box_with_check: |
-| ***07.26*** |                                     |                         |
-| ***07.27*** |                                     |                         |
-| ***07.28*** |                                     |                         |
-| ***07.29*** |                                     |                         |
-| ***07.30*** |                                     |                         |
-| ***07.31*** |                                     |                         |
+|    Date     |                      content                      |          check          |
+| :---------: | :-----------------------------------------------: | :---------------------: |
+| ***07.14*** |               공부시작 ch01 - ch02                | :ballot_box_with_check: |
+| ***07.15*** |                       ch03                        | :ballot_box_with_check: |
+| ***07.16*** |                   ch04 01/02/03                   | :ballot_box_with_check: |
+| ***07.17*** |                       ch04                        | :ballot_box_with_check: |
+| ***07.18*** |                   ch05 : 01/02/                   | :ballot_box_with_check: |
+| ***07.19*** |                 ch05 : 03 mission                 | :ballot_box_with_check: |
+| ***07.20*** |        ch06 : for문 & 다중 for문 / mission        | :ballot_box_with_check: |
+| ***07.21*** |             ch07 : while문 / Mission              | :ballot_box_with_check: |
+| ***07.22*** |               ch08 : 함수 / Mission               | :ballot_box_with_check: |
+| ***07.23*** |             ch09 : 함수기능 / Mission             | :ballot_box_with_check: |
+| ***07.24*** |                ch09 : 함수 기능 03                | :ballot_box_with_check: |
+| ***07.25*** |                ch09 : 함수 기능 04                | :ballot_box_with_check: |
+| ***07.26*** |                ch09 all / Mission                 | :ballot_box_with_check: |
+| ***07.27*** |                        :x:                        |           :x:           |
+| ***07.28*** |                        :x:                        |           :x:           |
+| ***07.29*** |                        :x:                        |           :x:           |
+| ***07.30*** |                        :x:                        |           :x:           |
+| ***07.31*** |                        :x:                        |           :x:           |
+| ***08.01*** |                        :x:                        |           :x:           |
+| ***08.02*** |                  ch10 함수 중급                   | :ballot_box_with_check: |
+| ***08.03*** | ch10 함수 중급 : 객체 함수, 리터럴 함수, 익명함수 | :ballot_box_with_check: |
 
 <br>
 
