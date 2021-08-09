@@ -69,6 +69,8 @@ _교재의 내용은 <자바스크립트+제이쿼리 기본편>이다._
 | ***08.01*** |                        :x:                        |           :x:           |
 | ***08.02*** |                  ch10 함수 중급                   | :ballot_box_with_check: |
 | ***08.03*** | ch10 함수 중급 : 객체 함수, 리터럴 함수, 익명함수 | :ballot_box_with_check: |
+| ***08.09*** | ch10 함수 중급 : 콜백함수 vs 리턴함수, 클로저함수 | :ballot_box_with_check: |
+| ***08.10*** |                     ch10 미션                     | :ballot_box_with_check: |
 
 <br>
 
