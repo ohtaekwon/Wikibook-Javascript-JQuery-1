@@ -686,4 +686,187 @@ function calculator(op, num1, num2){
 
 ***이처럼 중첩함수에서는 중첩함수 내부에 품고 있는 변수와 함수를 접근해서 사용할 수 있다.***
 
+<br>
 
+---
+
+<br>
+
+## :pencil:_Lesson 06. 콜백 함수_
+
+### _01. 콜백함수란?_
+
+:pencil: **문법**
+
+```javascript
+function 함수이름(callback){
+    . . . .
+    callback(결과);
+}
+```
+
+`콜백 함수`는 주로 **함수 내부의 처리 결과값을 함수 외부로 내보낼 때 사용한다.** 
+=  `return`문과 비슷한 기능을 한다고 생각하면 된다.
+
+`콜백 함수`를 사용하는 하는 구조를 살펴보면 위의 문법처럼 **특정 함수의 매개변수 값으로 콜백 함수를 넘긴 후 처리 결과를 콜백 함수의 매개변수에 담아 콜백 함수를 호출**하는 구조를 가지고 있다. 이 구조를 사용하면 로직 구현 부분과 로직 처리 부분을 나눠 코딩할 수 있다. 
+
+_따라서, 로직 구현 부분은 동일하고 로직 처리 부분을 다양하게 처리해야하는 경우 유용하게 사용할 수 있다._
+
+![10.06_1 img](https://github.com/ohtaekwon/Wikibook-Javascript-JQuery-1/blob/master/img/10.06_1.png?raw=true)
+
+<br>
+
+### _02. 예제_
+
+#### :memo:_예제 01)_ 풀이 전 코드는 사칙연산 계산기이다. 풀이 전 코드를 요구사항에 맞게 출력될 수 있도록 수정하여라.
+
+**요구사항**
+
+- calculator1("연산자", 값1, 값2)을 실행하면, `"두 수의 합은 00입니다."`를 출력하시오.
+- calculator2("연산자", 값1, 값2)을 실행하면, `"정답은 00입니다."`를 출력하시오.
+
+:ballot_box_with_check: **풀이 전 코드 : 소스**
+
+```javascript
+// 사칙연산 함수
+function calculator(op, num1, num2){
+    var result = "";
+    
+    switch(op){
+        case "+":
+            result = num1+num2;
+            break;
+        case "-":
+            result = num1-num2;
+            break;
+        case "*":
+            result = num1*num2;
+            break;
+        case "/":
+            result = num1/num2;
+            break;
+        default :
+            result = "지원하지 않는 연사자입니다."
+    }
+    document.write("두 수의 합은"+result+"입니다.","<br>");
+}
+calculator("+",10,20);		// 두 수의 합은30입니다.
+```
+
+<br>
+
+:one: **일반 풀이**
+
+```javascript
+// 사칙연산 함수
+function calculator1(op, num1, num2){	//------------------(※1)
+    var result = "";
+    
+    switch(op){
+        case "+":
+            result = num1+num2;
+            break;
+        case "-":
+            result = num1-num2;
+            break;
+        case "*":
+            result = num1*num2;
+            break;
+        case "/":
+            result = num1/num2;
+            break;
+        default :
+            result = "지원하지 않는 연사자입니다."
+    }
+    document.write("두 수의 합은"+result+"입니다.","<br>");
+}
+
+function calculator2(op, num1, num2){	//------------------(※2)
+    var result = "";
+    switch(op){
+        case "+":
+            result = num1 + num2;
+            break;
+        case "-":
+            result = num1 - num2;
+            break;
+        case "*":
+            result = num1*num2;
+            break;
+        case "/":
+            result = num1/num2;
+            break;
+        default :
+            result = "지원하지 않는 연산자입니다.";
+    }
+    document.write("정답은 = "+result+"입니다.<br>"); //------------------(※3)
+}
+
+calculator1("+",10,20); //------------------(※4)
+calculator2("+",10,20);
+
+// 두 수의 합은30입니다.
+// 정답은 = 30입니다.
+```
+
+:pencil: **설명**
+
+여러가지 방법이 있지만, 위의 풀이처럼 기존 코드를 복사한 후 로직 처리 부분만 수정해서 처리할 수 있다. 풀이를 간단히 설명하면,
+
+- `※1` , 기존 코드에서 함수 이름을 `calculator`에서 `calculator1`으로 변경해준다.
+- `※2`,  기존 코드를 그대로 복사한 후 함수 이름을 `calculator2`로 변경해준다.
+- `※3` ,  출력 정보를 요구사항에 맞게 수정해준다.
+- `※4`,  두 개의 함수를 호출해 준다.
+
+<br>
+
+:two: **콜백 함수사용 풀이**
+
+```javascript
+function calculator(op, num1, num2, callback){	//------------------(※1)
+    var result = "";
+    
+    switch(op){
+        case "+":
+            result = num1 + num2;
+            break;
+        case "-":
+            result = num1 - num2;
+            break;
+        case "*":
+            result = num1 * num2;
+            break;
+        case "/":
+            result = num1 / num2;
+            break;
+        default :
+            result = "지원하지 않는 연산자입니다.";            
+    }
+    callback(result);	//------------------(※2)
+}
+
+function print1(result){	//------------------(※3)
+    document.write("두 수의 합은 = " + result + "입니다.","<br>");
+}
+
+function print2(result){	//------------------(※4)
+    document.write("정답은 = "+result+"입니다. <br>");
+}
+calculator("+", 10, 20, print1);	//------------------(※5)
+calculator("+", 10, 20, print2);	//------------------(※6)
+```
+
+:pencil: **설명**
+
+- `※1`, 먼저 `calculator()`함수 마지막 부분에 콜백 함수로 사용할 함수를 저장할 `callback`이라는 이름을 가진 매개변수를 추가해 준다. 
+  - function calculator(op, num1, num2, callback)
+  - 참고로 매개변수 이름을 반드시 `callback`으로 하지 않아도 된다.
+- `※2`, 기존 로직 부분을 주석처리한 후 결과값을 callback 함수에 넣어 호출해준다.
+- `※3`, 신규로 `print1()`을 만들어 `calculator1`의 로직 처리 부분을 넣어준다.
+- `※4`, 신규로 `print2()`를 만들어 `calculator2`의 로직 처리 부분을 넣어준다.
+- `※5`, `※6` 마지막으로 `print1()` 함수와 `print2()` 함수를 매개변수로 값으로 해서 `calculator()` 함수를 각각 호출해준다.
+
+_이처럼, 콜백함수를 이용하면 로직 처리 부분을 분리해 구현할 수 있다._
+따라서, 처리부분을 수정해야하는 경우 로직 부분을 전혀 수정할 필요 없이 처리 부분만 수정하면 된다.
+
+<br>
