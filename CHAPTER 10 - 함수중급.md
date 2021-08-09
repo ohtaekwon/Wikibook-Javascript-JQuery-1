@@ -1099,4 +1099,133 @@ function start(){
 ```
 
 <br>
+### _03. 클로저를 사용하면 좋은 점_
 
+클로저를 사용하면 좋은 점으로는 **연관있는 변수와 기능(중첩함수)을 하나의 함수로 묶어 독립적으로 실행시킬 수 있다.** 즉, 함수 내부에 데이터가 만들어지기 때문에 함수 외부에서 수정할 수 없는 보호된 데이터를 만들 수 있다.
+
+객체지향 프로그래밍에서는 이것을 `private`데이터라고 부른다.
+
+#### :memo:_예제 04)_ 클로저가 사용된 탭 메뉴
+
+```html
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+
+	<style>
+		.tab-menu {
+			list-style: none;
+			height:80px;
+		}
+
+		.tab-menu li {
+			width:99px;
+			height:40px;
+			background-position-y:0;
+			text-indent: -1000px;
+			overflow: hidden;
+			display: inline-block;
+			float:left;
+		}
+		.tab-menu li:hover {
+			background-position-y: -40px;
+		}
+		.tab-menu li.select {
+			background-position-y: -80px;
+			height:80px;
+		}
+		.tab-menu li.menuitem1 {
+			background-image: url(./images/newbtn.bar.1.png);
+		}
+		.tab-menu li.menuitem2 {
+			background-image: url(./images/newbtn.bar.2.png);
+		}
+		.tab-menu li.menuitem3 {
+			background-image: url(./images/newbtn.bar.3.png);
+		}
+		.tab-menu li.menuitem4 {
+			background-image: url(./images/newbtn.bar.4.png);
+		}
+		.tab-menu li.menuitem5 {
+			background-image: url(./images/newbtn.bar.5.png);
+		}
+		.tab-menu li.menuitem6 {
+			background-image: url(./images/newbtn.bar.6.png);
+		}
+	</style>
+	 
+    <script src="../../libs/jquery-1.11.0.min.js"></script>
+    
+
+	<script>
+		/*
+		 예제 04: 클로저가 사용된 탭메뉴(입력 코드 없음)
+		 */
+		$(document).ready(function(){
+			// 탭메뉴 코드가 동작할 수 있도록 tabMenu() 함수 호출
+			tabMenu("#tabMenu1 li");
+
+			tabMenu("#tabMenu2 li");
+		});
+
+
+		function tabMenu(selector){
+			// 선택 한 탭메뉴를 저장할 변수
+			var $selectMenuItem =null;
+
+			// 메뉴 항목에 클릭 이벤트 등록
+			$(selector).click(function(){
+
+				// 기존 선택 메뉴 항목이 있으면 비 선택 상태로 만들기
+				if($selectMenuItem!=null){
+				   $selectMenuItem.removeClass("select");
+				}
+
+				// 클릭한 메뉴 항목을 신규 선택 메뉴 항목으로 저장
+				$selectMenuItem = $(this);
+				// 선택 상태로 만들기
+				$selectMenuItem.addClass("select");
+
+			})
+		}
+	</script>
+
+
+</head>
+	
+	<body>
+<p>첫 번째 탭메뉴</p>	    
+<ul class="tab-menu" id="tabMenu1">
+	<li class="menuitem1">google</li>
+	<li class="menuitem2">facebook</li>
+	<li class="menuitem3">pinterest</li>
+	<li class="menuitem4">twitter</li>
+	<li class="menuitem5">airbnb</li>
+	<li class="menuitem6">path</li>
+</ul>		
+<p>두 번째 탭메뉴</p>
+<ul class="tab-menu" id="tabMenu2">
+	<li class="menuitem1">google</li>
+	<li class="menuitem2">facebook</li>
+	<li class="menuitem3">pinterest</li>
+	<li class="menuitem4">twitter</li>
+	<li class="menuitem5">airbnb</li>
+	<li class="menuitem6">path</li>
+</ul>	
+	</body>
+</html>
+```
+
+<br>
+
+![10.07_1 img](https://github.com/ohtaekwon/Wikibook-Javascript-JQuery-1/blob/master/img/10.07_1.png?raw=true)
+
+:pencil: **설명**
+
+`tabMenu()` 함수 호출이 끝났음에도 불구하고 선택된 탭메뉴 항목을 담고 있는 변수인 `$selectMenuItem`이 사라지지 않고 계속해서 상태 값을 유지하고 있다.
+
+즉, 익명함수인 `click`이벤트 리스너에서 `$selectMenuItem` 변수를 사용하고 있는 전형적인 `클로저`이다. 이처럼 `클로저`를 이용하면 **독립적으로 동작**하는 탭메뉴를 만들 수 있다. 
+
+_클로저를 이용하면 함수 하나에 연관 있는 변수와 함수를 묶어 유용하게 사용할 수 있다._ 
