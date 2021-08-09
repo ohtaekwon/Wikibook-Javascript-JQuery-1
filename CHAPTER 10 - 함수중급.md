@@ -961,4 +961,142 @@ _서버와 데이터를 주고받을 때 사용하는 jQuery Ajax 기능들에�
 
 #### 4) jQuery 애니메이션 완료
 
+<br>
+
+---
+
+<br>
+
+## :pencil:_Lesson 07. 클로저 함수_
+
+### _01. 클로저란?_
+
+클로저는 함수 내부에서 만든 지역변수가 사라지지 않고 계속해서 값을 유지하고 있는 상태를 말한다.
+
+```javascript
+function func(){
+    var count = 1;	// 일반 지역 변수의 겨웅 함수 호출이 완료되면 사라진다.
+    
+    /*
+    	클로저를 이용하면 함수호출 완료 후 
+    	사라지는 지역변수를 사라지지 않는 
+    	데이터 저장소로 만들 수가 있다.
+    */
+    
+    $("#btn").on("clock",
+      function(){
+        count++;
+        alert("count = "+count);
+    }
+  );
+}
+```
+
+:pencil: **문법**
+
+```javascript
+function 외부함수(){
+    var 변수A;
+    function 내부함수(){
+        변수A 사용;
+    }
+}
+```
+
+클로저는 일종의 현상이기 때문에 정해진 문법은 없다. 위의 문법처럼 **내부함수**에서 **내부함수를 포함하고 있는 함수(외부함수)의 변수A**를 사용하는 구조인 경우로 표현할 수 있으며 **내부 함수를 클로저 함수라고 부른다.**
+
+또한, _변수A는 클로저 현상에 의해 외부함수() 호출이 끝나더라도 사라지지 않고 값을 유지하게 된다._
+
+<br>
+
+### _02. 예제_
+
+#### :memo:_예제 01)_ 일반 함수인 경우
+
+```javascript
+function addCount(){
+    var count=0;
+    count++;
+    return count;
+}
+
+document.write("1. count = "+addCount(),"<br>");	//------------------(※1)
+document.write("2. count = "+addCount(),"<br>");	//------------------(※2)
+document.write("3. count = "+addCount(),"<br>");	//------------------(※3)
+
+// 실행결과
+// 1. count = 1
+// 2. count = 1
+// 3. count = 1
+```
+
+:pencil: **설명**
+
+- `※1` `addCount()` 함수가 호출되면 지역변수 count가 0으로 초기화 됨과 동시에 만들어진다. 다음으로 증가 연산자에 의해 1이 되며, 이 값을 리턴하기 때문에 **1이 출력된다.** **그리고 모든 구문을 실행한 함수는 종료된다.**
+  이와 동시에 함수 내부에 만들어진 count는 메모리에서 흔적조차 없이 사라진다.
+- `※2`, `※3` 역시 `※1`과 동일하게 실행되기 때문에 1이 출력된다.
+
+_이처럼 일반적인 경우 함수 내부에 위치하고 있는 지역변수는 함수가 종료됨가 동시에 메모리에서 사라지게 된다._
+
+<br>
+
+#### :memo:_예제 02)_ 클로저를 사용한 경우
+
+_클로저 함수의 경우에 지역변수가 사라지지 않고 계속해서 값을 유지한다._
+
+```javascript
+function createCounter(){
+    var count=0;
+    function addCount(){
+        count++;
+        return count;
+    }
+    return addCount;
+}
+
+var counter = createCounter();	//----------(※1)
+
+document.write("1. count = "+ counter(), "<br>");	//----------(※2)
+document.write("2. count = "+ counter(), "<br>");	//----------(※3)
+document.write("3. count = "+ counter(), "<br>");	//----------(※4)
+
+// 실행결과
+// 1. count = 1
+// 2. count = 2
+// 3. count = 3
+```
+
+:pencil: **설명**
+
+- `※1`, `createCounter()` 함수가 호출되면 지역변수 count가 0으로 초기화됨과 동시에 만들어진다. 
+  그리고 내부에 `addCount()`라는 함수도 만들어지고, 마지막으로 `addCount()` 함수를 리턴하고 `createCounter()` 함수는 종료된다.
+- `※2`에서 `counter()` 실행되면 `addCount()` 함수가 실행되어 증가 연산자에 의해서 count값이 0에서 1로 증가하기 때문에 1이 출력된다.
+- `※3`, `※4` 둘 모두 `counter()`가 실행되면 count가 값이 증가하기 때문에 2와 3이 각각 출력된다.
+
+<br>
+
+`createCounter()`가 종료되더라도 `count`는 사라지지 않고 계속해서 값을 유지하고 있다. 이유는 `addCounter()` 함수 내부에 count변수를 사용하고 있는 상태에서 외부로 리턴되어 클로저 현상이 발생한다.
+
+<br>
+
+#### :memo:_예제 03)_ 버튼을 클릭하면 클릭할 때마다 1씩 증가시켜 보시오.
+
+```javascript
+$("#btnStart").click(function(){
+    start();
+    document.write("시작합니다.");
+});
+
+function start(){
+    var count=0;	// 지역변수
+    
+    // 익명함수
+    setInterval function(){
+        count++;	// count값의 증가
+        document.write(count);
+    },1000);
+}
+```
+
+<br>
 
